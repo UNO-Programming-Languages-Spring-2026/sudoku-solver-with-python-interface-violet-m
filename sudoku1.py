@@ -9,5 +9,10 @@ class ClingoApp(clingo.application.Application):
             ctrl.load(file)
         ctrl.ground([("base", [])])
         ctrl.solve()
+    def print_model(self, model, printer):
+        models = model.symbols(shown=True)
+        strings = [str(m) for m in models]
+        strings.sort()
+        print(" ".join(strings))
 if __name__ == "__main__":
     clingo.clingo_main(ClingoApp(), sys.argv[1:])
