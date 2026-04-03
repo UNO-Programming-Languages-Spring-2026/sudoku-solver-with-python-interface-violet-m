@@ -25,7 +25,19 @@ class Sudoku:
     @classmethod
     def from_str(cls, s: str) -> "Sudoku":
         sudoku = {}
-        # YOUR CODE HERE
+        r = 1
+        for row in s.split("\n"):
+            if not row.strip():
+                continue
+            c = 1
+            cells = row.split(" ")
+            for cell in cells:
+                if cell == "":
+                    continue
+                if cell != "-":
+                    sudoku[(r, c)] = int(cell)
+                c = c + 1
+            r = r + 1
         return cls(sudoku)
 
     @classmethod
